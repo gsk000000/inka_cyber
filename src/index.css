@@ -1,0 +1,586 @@
+:root {
+  /* Colores base */
+  --text-color: #1c1c1e;
+  --accent-color: #004ecb;
+  --white: #000000;
+  
+  /* Efectos Glass */
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-blur: blur(16px);
+  --glass-gradient: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.2)
+  );
+  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+  --glass-border-light: 1px solid rgba(255, 255, 255, 0.4);
+  
+  /* Colores de estado */
+  --color-verde: #2ecc71;
+  --color-naranja: #f39c12;
+  --color-rojo: #e74c3c;
+  --color-rojo-oscuro: #c0392b;
+
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.dashboard-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  background: url('https://512pixels.net/downloads/macos-wallpapers/10-6.png') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 2rem;
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+/* ========== Layout ========== */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* ========== Componentes Glass ========== */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: var(--glass-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  border: var(--glass-border);
+}
+
+.filters,
+.vuln-form {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  border: var(--glass-border);
+}
+
+/* ========== Tipografía ========== */
+h1, h2, h3, h4 {
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin: 0;
+  text-shadow: var(--shadow-sm);
+}
+
+/* ========== Tablas ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 1rem;
+  backdrop-filter: var(--glass-blur);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+th {
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+tr:hover td {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ========== Botones ========== */
+button {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Botón principal (azul) */
+.btn-primary {
+  background: var(--accent-color);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  background: #003b9b;
+  transform: translateY(-1px);
+}
+
+/* Botón Liquid Glass (Registrar Nueva) */
+.btn-glass-primary {
+  background: var(--glass-gradient);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border-light);
+  border-radius: 14px;
+  padding: 0.7rem 1.5rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  box-shadow: 
+    var(--shadow-sm),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-glass-primary:hover {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.3)
+  );
+  transform: translateY(-2px);
+  box-shadow: 
+    var(--shadow-md),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Botón Liquid Glass secundario (Ver Detalle) */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: var(--glass-border);
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  color: var(--accent-color);
+  font-weight: 500;
+  box-shadow: 
+    var(--shadow-sm),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 
+    var(--shadow-md),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Iconos para botones */
+.btn-icon {
+  font-size: 1.1rem;
+  display: inline-flex;
+}
+
+/* ========== Formularios ========== */
+input,
+select,
+textarea {
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  outline: none;
+  color: var(--text-color);
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+/* ========== Utilidades ========== */
+.vuln-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ========== Evidence Manager Compacto ========== */
+.compact-evidence {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.2rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+}
+
+.compact-evidence h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--white);
+  font-size: 1.1rem;
+}
+
+.evidence-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.file-input-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  background: rgba(0, 78, 203, 0.2);
+  color: var(--accent-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: 1px dashed rgba(0, 78, 203, 0.4);
+}
+
+.file-input-label:hover {
+  background: rgba(0, 78, 203, 0.3);
+}
+
+.file-input-label input {
+  display: none;
+}
+
+.evidence-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.evidence-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.file-name {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 0.8rem;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--color-rojo);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0 0.3rem;
+  transition: color 0.2s;
+}
+
+.remove-btn:hover {
+  color: var(--color-rojo-oscuro);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+  
+  .glass-card, .card {
+    padding: 1.2rem;
+    border-radius: 14px;
+  }
+  
+  .btn-glass-primary {
+    padding: 0.6rem 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .evidence-item {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .file-name {
+    max-width: 70%;
+  }
+}
+
+/* ========== Estilos para el detalle ========== */
+.detail-header {
+  margin-bottom: 2rem;
+}
+
+.detail-title {
+  font-size: 1.8rem;
+  color: var(--white);
+  margin: 1rem 0 0.5rem;
+  text-shadow: var(--shadow-sm);
+}
+
+.detail-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.meta-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+.detail-section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.detail-section h3 {
+  color: var(--accent-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.detail-text {
+  line-height: 1.6;
+  margin: 0;
+}
+
+.severity-category {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.severity-badge,
+.category-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+}
+
+.risk-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.risk-badge.alto,
+.risk-badge.crítico,
+.risk-badge.critico {
+  background-color: var(--color-rojo);
+  color: white;
+}
+
+.risk-badge.medio {
+  background-color: var(--color-naranja);
+  color: white;
+}
+
+.risk-badge.bajo {
+  background-color: var(--color-verde);
+  color: white;
+}
+
+.solutions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.solution-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.solution-item::before {
+  content: '•';
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-danger {
+  background: var(--color-rojo);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: var(--color-rojo-oscuro);
+  transform: translateY(-2px);
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-edit {
+  background: var(--color-rojo);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-edit:hover {
+  background: var(--color-rojo-oscuro);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-glass-primary.cancel {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-rojo);
+}
+
+table td button {
+  margin: 0.1rem;
+}
+
+/* Efectos para el botón durante carga */
+.btn-primary.submitting {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary.submitting::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  animation: submittingAnimation 1.5s infinite;
+}
+
+@keyframes submittingAnimation {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Efecto de éxito */
+.btn-primary.success {
+  background-color: var(--color-verde);
+  animation: successPulse 0.5s;
+}
+
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Deshabilitar elementos durante carga */
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
