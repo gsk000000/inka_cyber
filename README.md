@@ -3,6 +3,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-18-blue?logo=react" />
+  <img src="https://img.shields.io/badge/Vite-purple" />
   <img src="https://img.shields.io/badge/Estado-En%20Desarrollo-yellow" />
 </p>
 
