@@ -1,6 +1,8 @@
 <h1 align="center">PROYECTO INKA</h1>
 <p align="center">Plataforma de Panel Administrativo</p>
 
+## ESTO ES EVALUACIÓN N°3, ANDA A RELEASES PARA LA EV°4
+
 <p align="center">
   <img src="https://img.shields.io/badge/React-18-blue?logo=react" />
   <img src="https://img.shields.io/badge/Vite-purple" />
