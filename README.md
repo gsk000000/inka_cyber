@@ -20,7 +20,7 @@ Define las rutas de la aplicacion usando **REACT ROUTER DOM**
 ``/`` carga el dashboard
 ```/vuln/:id``` muestra el detalle de una vulnerabilidad
 
-# 2. VunlContext.jsx
+# 2. VulnContext.jsx
 Este archivo usa **Context API** para mantener el listado de vulnerabilidades accesible desde cualquier parte del código. Incluye funciones para:
 
 ```addVuln()``` - añadir una nueva vulnerabilidad.
