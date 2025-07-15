@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { useVuln } from '../context/VulnContext';
 import Filters from '../components/Filters';
 import VulnerabilityList from '../components/VulnerabilityList';
-import VulnerabilityForm from '../components/VulnerabilityForm';
+#import VulnerabilityForm from '../components/VulnerabilityForm';
 
 export default function DashboardPage() {
   const { vulns, addVuln, updateVuln, deleteVuln } = useVuln();
@@ -10,14 +10,14 @@ export default function DashboardPage() {
   const [editingVuln, setEditingVuln] = useState(null);
   const [filtros, setFiltros] = useState({ riesgo: '', tipo: '', fecha: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  #const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const filtradas = useMemo(() => {
     return vulns.filter((v) => {
       if (filtros.riesgo && v.riesgo !== filtros.riesgo) return false;
       if (filtros.tipo && !v.tipo.toLowerCase().includes(filtros.tipo.toLowerCase())) return false;
       if (filtros.fecha && v.fecha !== filtros.fecha) return false;
-      return true;
+      return false;
     });
   }, [vulns, filtros]);
 
